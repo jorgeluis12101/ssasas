@@ -1,0 +1,56 @@
+<div class="container py-5">
+    <h2 class="text-center mb-4">Categorías y Eventos</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="list-group">
+          <li
+            *ngFor="let categoria of categorias"
+            class="list-group-item list-group-item-action"
+            [class.active]="categoria === selectedCategoria"
+            (click)="selectCategoria(categoria)"
+          >
+            {{ categoria.nombre }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <div *ngIf="selectedCategoria">
+          <h3 class="mb-3 text-center">NO COMPLETADOS</h3>
+          <ul class="list-group">
+            <li *ngFor="let evento of eventosNoCompletados" class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="evento-info">
+                <h5 class="mb-1">{{ evento.titulo }}</h5>
+                <p class="mb-1">{{ evento.contenido }}</p>
+                <small class="text-muted">{{ evento.fecha }}</small>
+              </div>
+              <div class="evento-acciones">
+                <label class="checkbox-label">
+                  <input type="checkbox" (change)="toggleEstado(evento)" [checked]="evento.completado">
+                  <span class="checkbox-custom"></span>
+                </label>
+              </div>
+            </li>
+          </ul>
+          <h4 class="mt-4">Eventos Completados</h4>
+          <ul class="list-group">
+            <li *ngFor="let evento of eventosCompletados" class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="evento-info">
+                <h5 class="mb-1">{{ evento.titulo }}</h5>
+                <p class="mb-1">{{ evento.contenido }}</p>
+                <small class="text-muted">{{ evento.fecha }}</small>
+              </div>
+              <div class="evento-acciones">
+                <label class="checkbox-label">
+                  <input type="checkbox" (change)="toggleEstado(evento)" [checked]="evento.completado">
+                  <span class="checkbox-custom"></span>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="!selectedCategoria" class="text-center">
+          <p>Seleccione una categoría para ver sus eventos.</p>
+        </div>
+      </div>
+    </div>
+  </div>

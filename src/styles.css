@@ -1,0 +1,9 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.mat-dialog-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

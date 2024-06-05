@@ -1,0 +1,56 @@
+.sidenav-container {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.sidenav {
+  width: 300px;
+  background-color: #4b99a7;
+  color: black;
+  position: absolute;
+}
+
+.sidenav-content {
+  padding: 20px;
+}
+
+.main-content {
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+.calendar-container {
+  max-width: 1000px; /* Ajusta el ancho del calendario */
+  margin: 0 auto; /* Centra el calendario horizontalmente */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+mat-toolbar {
+  background: #4b99a7;
+  color: white;
+  z-index: 1;
+  position: relative;
+}
+
+h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+}
+
+li {
+  margin: 1.5em 0;
+  padding: 0;
+}
+
+b { /* used for event dates/times */
+  margin-right: 3px;
+}

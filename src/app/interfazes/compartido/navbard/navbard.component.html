@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-md bg-dark py-3">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center text-light" [routerLink]="isLoggedIn ? null : '/home'" [class.disabled]="isLoggedIn">
+            <span class="bs-icon-sm bs-icon-rounded bs-icon-primary-light d-flex justify-content-center align-items-center me-2 bs-icon"></span>
+            <span class="fw-bolder" style="padding-left: 20px;">Hazlo YA!!</span>
+        </a>
+        <button data-bs-toggle="collapse" class="navbar-toggler text-light" data-bs-target="#navcol-2">
+            <span class="visually-hidden">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-2">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link text-light" (click)="scrollToSection('features')">Características</a>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link text-light" (click)="scrollToSection('about')">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link text-light" (click)="scrollToSection('testimonials')">Testimonios</a>
+                </li>
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <a class="nav-link text-light" (click)="scrollToSection('contact')">Contacto</a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link text-light" routerLink="/user/calendario">Calendario</a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link text-light" routerLink="/user/categoria-eventos">Categorías y Eventos</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item d-flex align-items-center me-3" *ngIf="isLoggedIn">
+                    <span class="navbar-text text-light me-2">Hola,</span>
+                    <span class="fw-bold text-light">{{ userName }}</span>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <button class="btn btn-outline-light" (click)="logout()">Cerrar Sesión</button>
+                </li>
+                <li class="nav-item dropdown" *ngIf="!isLoggedIn">
+                    <button class="btn btn-outline-primary dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sign Up
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+                        <li><a class="dropdown-item" routerLink="/registro">Registro</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

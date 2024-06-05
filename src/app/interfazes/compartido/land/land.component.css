@@ -1,0 +1,99 @@
+.landing-page {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.hero {
+    background-image: url('../../../../assets/principal.jpg');
+    background-size: cover;
+
+    color: white;
+    padding: 100px 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.features {
+    background-color: #f8f9fa;
+    padding: 50px 20px;
+}
+
+.feature-icon img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s;
+}
+
+.feature-item {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials {
+    background-color: #e9ecef;
+    padding: 50px 20px;
+}
+
+.testimonial-item {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cta {
+    background-color: #4b99a7;
+    color: white;
+    padding: 50px 20px;
+    margin-top: 20px;
+}
+
+.cta button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: white;
+    color: #4b99a7;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cta button:hover {
+    background-color: #4b99a7;
+    color: white;
+    transform: scale(1.05);
+}
+
+.cta .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 50px 20px;
+    }
+    
+    .feature-item, .testimonial-item {
+        margin-bottom: 20px;
+    }
+}

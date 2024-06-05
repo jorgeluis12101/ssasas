@@ -1,0 +1,64 @@
+<h1 mat-dialog-title>Registrar Evento</h1>
+<div mat-dialog-content>
+  <form [formGroup]="eventForm">
+    <mat-form-field>
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="titulo">
+      <mat-error *ngIf="titulo.hasError('required')">El título es obligatorio</mat-error>
+      <mat-error *ngIf="titulo.hasError('minlength')">El título debe tener al menos 3 caracteres</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Contenido</mat-label>
+      <textarea matInput formControlName="contenido"></textarea>
+      <mat-error *ngIf="contenido.hasError('required')">El contenido es obligatorio</mat-error>
+      <mat-error *ngIf="contenido.hasError('minlength')">El contenido debe tener al menos 10 caracteres</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha</mat-label>
+      <input matInput formControlName="fecha">
+      <mat-error *ngIf="fecha.hasError('required')">La fecha es obligatoria</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Prioridad</mat-label>
+      <mat-select formControlName="prioridad">
+        <mat-option *ngFor="let tipo of ['ALTA', 'MEDIA', 'BAJA']" [value]="tipo">{{ tipo }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="prioridad.hasError('required')">La prioridad es obligatoria</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Recordatorio Fecha</mat-label>
+      <input matInput formControlName="recordatorioFecha" type="date">
+      <mat-error *ngIf="recordatorioFecha.hasError('required')">La fecha del recordatorio es obligatoria</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Recordatorio Hora</mat-label>
+      <input matInput formControlName="recordatorioHora" type="time">
+      <mat-error *ngIf="recordatorioHora.hasError('required')">La hora del recordatorio es obligatoria</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Categoría</mat-label>
+      <mat-select formControlName="categoriaId">
+        <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+          {{ categoria.nombre }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="categoriaId.hasError('required')">La categoría es obligatoria</mat-error>
+      <mat-error *ngIf="categoriaId.hasError('min')">La categoría debe ser un número positivo</mat-error>
+    </mat-form-field>
+  </form>
+
+  <h2>Crear Nueva Categoría</h2>
+  <form [formGroup]="categoriaForm" (ngSubmit)="onSubmitCategoria()">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+      <mat-error *ngIf="categoriaForm.get('nombre')?.hasError('required')">El nombre es obligatorio</mat-error>
+      <mat-error *ngIf="categoriaForm.get('nombre')?.hasError('minlength')">El nombre debe tener al menos 3 caracteres</mat-error>
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="categoriaForm.invalid">Crear Categoría</button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button (click)="onSubmit()" [disabled]="!eventForm.valid">Guardar</button>
+</div>
