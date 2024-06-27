@@ -29,7 +29,7 @@ export interface Evento {
   providedIn: 'root'
 })
 export class EventoService {
-  private apiUrl = 'http://localhost:8080/api/v1/eventos';
+  private apiUrl = 'http://localhost:8080/api/eventos';
 
   constructor(private http: HttpClient) {}
 

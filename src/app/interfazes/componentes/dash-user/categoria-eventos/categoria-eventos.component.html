@@ -1,22 +1,33 @@
 <div class="container py-5">
-    <h2 class="text-center mb-4">Categorías y Eventos</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="list-group">
+  <div class="text-center mb-4 section-title-wrapper">
+    <h2 class="section-title "><i class="fas fa-calendar-alt section-title-icon"></i>Categorías y Eventos</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header bg-dark text-white text-center">
+          Categorías
+        </div>
+        <ul class="list-group list-group-flush">
           <li
             *ngFor="let categoria of categorias"
             class="list-group-item list-group-item-action"
             [class.active]="categoria === selectedCategoria"
             (click)="selectCategoria(categoria)"
+            [ngClass]="{'bg-light': categoria !== selectedCategoria, 'bg-info text-white': categoria === selectedCategoria}"
           >
             {{ categoria.nombre }}
           </li>
         </ul>
       </div>
-      <div class="col-md-8">
-        <div *ngIf="selectedCategoria">
-          <h3 class="mb-3 text-center">NO COMPLETADOS</h3>
-          <ul class="list-group">
+    </div>
+    <div class="col-md-8">
+      <div *ngIf="selectedCategoria">
+        <div class="card mb-4">
+          <div class="card-header bg-dark text-white text-center">
+            NO COMPLETADOS
+          </div>
+          <ul class="list-group list-group-flush">
             <li *ngFor="let evento of eventosNoCompletados" class="list-group-item d-flex justify-content-between align-items-center">
               <div class="evento-info">
                 <h5 class="mb-1">{{ evento.titulo }}</h5>
@@ -24,15 +35,18 @@
                 <small class="text-muted">{{ evento.fecha }}</small>
               </div>
               <div class="evento-acciones">
-                <label class="checkbox-label">
-                  <input type="checkbox" (change)="toggleEstado(evento)" [checked]="evento.completado">
-                  <span class="checkbox-custom"></span>
-                </label>
+                <button class="btn btn-icon" (click)="toggleEstado(evento)">
+                  <i class="far fa-circle" [ngClass]="{'fas fa-check-circle': evento.completado, 'far fa-circle': !evento.completado}"></i>
+                </button>
               </div>
             </li>
           </ul>
-          <h4 class="mt-4">Eventos Completados</h4>
-          <ul class="list-group">
+        </div>
+        <div class="card">
+          <div class="card-header bg-secondary text-white text-center">
+            Eventos Completados
+          </div>
+          <ul class="list-group list-group-flush">
             <li *ngFor="let evento of eventosCompletados" class="list-group-item d-flex justify-content-between align-items-center">
               <div class="evento-info">
                 <h5 class="mb-1">{{ evento.titulo }}</h5>
@@ -40,17 +54,19 @@
                 <small class="text-muted">{{ evento.fecha }}</small>
               </div>
               <div class="evento-acciones">
-                <label class="checkbox-label">
-                  <input type="checkbox" (change)="toggleEstado(evento)" [checked]="evento.completado">
-                  <span class="checkbox-custom"></span>
-                </label>
+                <button class="btn btn-icon" (click)="toggleEstado(evento)">
+                  <i class="far fa-circle" [ngClass]="{'fas fa-check-circle': evento.completado, 'far fa-circle': !evento.completado}"></i>
+                </button>
               </div>
             </li>
           </ul>
         </div>
-        <div *ngIf="!selectedCategoria" class="text-center">
-          <p>Seleccione una categoría para ver sus eventos.</p>
+      </div>
+      <div *ngIf="!selectedCategoria" class="text-center">
+        <div class="alert alert-info" role="alert">
+          Seleccione una categoría para ver sus eventos.
         </div>
       </div>
     </div>
   </div>
+</div>

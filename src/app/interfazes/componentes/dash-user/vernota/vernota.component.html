@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <!-- Botón para volver atrás -->
+    <div class="d-flex justify-content-start mb-4">
+      <button class="btn btn-secondary" (click)="volverAtras()">Volver</button>
+    </div>
+  
+    <h2 class="text-center">Ver Nota Completa</h2>
+    <div class="d-flex justify-content-end mb-2">
+        <button class="btn btn-primary" (click)="actualizarNota()">Guardar Cambios</button>
+    </div>
+    <div>
+        <label for="libretaSeleccionada" class="form-label">Asignar a Libreta</label>
+        <select id="libretaSeleccionada" class="form-select" [(ngModel)]="libretaSeleccionada" (change)="asignarLibreta()">
+          <option *ngFor="let libreta of libretas" [value]="libreta.id">{{ libreta.nombre }}</option>
+        </select>
+      </div>
+    <div *ngIf="nota" class="card mt-4 position-relative">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div class="flex-grow-1">
+          <label for="tituloNota" class="form-label">Título</label>
+          <input type="text" class="form-control" id="tituloNota" [(ngModel)]="nota.titulo">
+        </div>
+      </div>
+      <div class="card-body">
+        <angular-editor [(ngModel)]="nota.contenido" name="contenidoNota" [config]="editorConfig" class="w-100 angular-editor-textarea"></angular-editor>
+      </div>
+      <div class="card-footer d-flex justify-content-between align-items-center">
+        
+        <button class="btn btn-danger" (click)="eliminarNota()" title="Eliminar Nota">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+    </div>
+</div>

@@ -7,9 +7,32 @@
     margin: auto;
 }
 
-h2 {
+.section-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-title {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #343a40;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #007bff;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 1.5rem;
+    margin-left: 10px;
+    line-height: 1;
+}
+
+.section-title-icon {
+    font-size: 2rem;
+    color: #007bff;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 .list-group-item {
@@ -55,26 +78,17 @@ h2 {
     color: #6c757d;
 }
 
-ul.list-group {
+.card {
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.btn {
-    margin-top: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    color: white;
-}
-
-.btn-success {
-    background-color: #28a745;
-    color: white;
+.card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-size: 1.25rem;
 }
 
 .evento-info {
@@ -84,4 +98,33 @@ ul.list-group {
 .evento-acciones {
     display: flex;
     align-items: center;
+}
+
+.btn-icon {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.btn-icon:hover {
+    color: #28a745;
+}
+
+.bg-dark {
+    background-color: #343a40 !important;
+}
+
+.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+.bg-info {
+    background-color: #17a2b8 !important;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
 }

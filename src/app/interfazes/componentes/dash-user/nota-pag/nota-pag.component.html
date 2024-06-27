@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">NOTAS</h2>
+  
+    <!-- Botón para redirigir a crear nueva nota -->
+    <div class="d-flex justify-content-end mb-4">
+      <button class="btn btn-primary" (click)="crearNota()">Crear Nota</button>
+    </div>
+  
+    <!-- Filtros -->
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <label for="filtroCategoria" class="form-label">Filtrar por Categoría</label>
+        <select id="filtroCategoria" class="form-control" [(ngModel)]="categoriaSeleccionada" (change)="filtrarNotas()">
+          <option value="">Todas</option>
+          <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="filtroPrioridad" class="form-label">Filtrar por Prioridad</label>
+        <select id="filtroPrioridad" class="form-control" [(ngModel)]="prioridadSeleccionada" (change)="filtrarNotas()">
+          <option value="">Todas</option>
+          <option *ngFor="let prioridad of prioridades" [value]="prioridad">{{ prioridad }}</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Cards de notas sin libreta -->
+    <h3 class="mt-5">Notas sin Libreta</h3>
+    <div class="row mt-3">
+      <div class="col-md-6 col-lg-4" *ngFor="let nota of notasSinLibreta">
+        <div class="card mb-3 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ nota.titulo }}</h5>
+            <p class="card-text" [innerHTML]="sanitizeHtml(truncarTexto(nota.contenido ?? '', 100))"></p>
+            <p class="text-muted">Fecha de Creación: {{ formatFecha(nota.fechaCreacion) }}</p>
+            <p class="text-muted">Prioridad: {{ nota.prioridad }}</p>
+            <p class="text-muted">Categoría: {{ nota.categoria }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <button class="btn btn-primary btn-sm" (click)="verNota(nota)">Ver</button>
+              <button class="btn btn-danger btn-sm" (click)="eliminarNota(nota.id!)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

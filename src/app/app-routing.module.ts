@@ -10,25 +10,36 @@ import { LoginComponent } from './interfazes/componentes/auth/login/login.compon
 import { RegistroComponent } from './interfazes/componentes/auth/registro/registro.component';
 import { CalendarioComponent } from './interfazes/componentes/dash-user/calendario/calendario.component';
 import { CategoriaEventosComponent } from './interfazes/componentes/dash-user/categoria-eventos/categoria-eventos.component';
+import { LibretaComponent } from './interfazes/componentes/dash-user/libreta/libreta.component';
+import { NotaComponent } from './interfazes/componentes/dash-user/nota/nota.component'; // Importa NotaComponent
+import { NotaPagComponent } from './interfazes/componentes/dash-user/nota-pag/nota-pag.component';
+import { VernotaComponent } from './interfazes/componentes/dash-user/vernota/vernota.component';
+import { CrearnotaComponent } from './interfazes/componentes/dash-user/crearnota/crearnota.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: LandComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'registro', component: RegistroComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
   {
     path: 'admin', component: DashAdminComponent, canActivate: [AdminGuard],
     children: [
-     
-
+   
     ]
   },
   {
     path: 'user', component: DashUserComponent, canActivate: [UserGuard],
     children: [
-      { path: 'calendario', component: CalendarioComponent},
-      { path: 'categoria-eventos', component: CategoriaEventosComponent }
+      { path: 'calendario', component: CalendarioComponent },
+      { path: 'categoria-eventos', component: CategoriaEventosComponent },
+      { path: 'libreta', component: LibretaComponent },
+      { path: 'notas/:id', component: NotaComponent },
+      { path: 'notaspag', component: NotaPagComponent } ,
+      { path: 'vernotas/:id', component: VernotaComponent },
+      { path: 'crearnota', component: CrearnotaComponent }
     ]
+
+
+
   }
 ];
 

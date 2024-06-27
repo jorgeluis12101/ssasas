@@ -1,0 +1,44 @@
+<div class="container mt-4">
+
+    <!-- Botón para volver atrás -->
+    <div class="d-flex justify-content-start mb-4">
+        <button class="btn btn-secondary" (click)="volverAtras()">Volver</button>
+      </div>
+    
+    <h2 class="text-center mb-4">Crear Nueva Nota</h2>
+    
+    <form (ngSubmit)="crearNota()" #notaForm="ngForm">
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" id="titulo" class="form-control" [(ngModel)]="nuevaNota.titulo" name="titulo" required>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="prioridad" class="form-label">Prioridad</label>
+          <select id="prioridad" class="form-control" [(ngModel)]="nuevaNota.prioridad" name="prioridad" required>
+            <option *ngFor="let prioridad of prioridades" [value]="prioridad">{{ prioridad }}</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="categoria" class="form-label">Categoría</label>
+          <select id="categoria" class="form-control" [(ngModel)]="nuevaNota.categoria" name="categoria" required>
+            <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <label for="libreta" class="form-label">Libreta</label>
+          <select id="libreta" class="form-control" [(ngModel)]="nuevaNota.libretaId" name="libreta">
+            <option [ngValue]="null">Sin Libreta</option>
+            <option *ngFor="let libreta of libretas" [value]="libreta.id">{{ libreta.nombre }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="contenido" class="form-label">Contenido</label>
+        <angular-editor [(ngModel)]="nuevaNota.contenido" name="contenidoNota" [config]="editorConfig" class="w-100 angular-editor-textarea"></angular-editor>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="notaForm.form.invalid">Crear Nota</button>
+    </form>
+</div>

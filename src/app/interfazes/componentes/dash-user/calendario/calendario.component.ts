@@ -29,7 +29,7 @@ export class CalendarioComponent implements OnInit {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: '' 
+      right: 'dayGridMonth,timeGridWeek,timeGridDay' 
     },
     initialView: 'dayGridMonth',
     locales: [esLocale],

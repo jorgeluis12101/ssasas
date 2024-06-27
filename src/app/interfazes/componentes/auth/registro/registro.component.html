@@ -1,128 +1,130 @@
+<!-- registro.component.html -->
 <div class="section">
-    <div class="container">
+  <div class="container">
       <div class="row full-height justify-content-center">
-        <div class="col-12 text-center align-self-center ">
-          <div class="section pb-5 pt-5 pt-sm-2 text-center">
-            
-            <div class="card-3d-wrap mx-auto">
-              <div class="card-3d-wrapper">
-                
-                <!-- Formulario de Registro -->
-                <div class="card-back">
-                  <div class="center-wrap">
-                    <div class="section text-center">
-                      <h4 class="mb-3 pb-3">Crear Cuenta</h4>
-                      <form [formGroup]="registerForm">
-                        <div class="form-group mb-2 pr-4" style="display: flex;">
-                          <div class="input-container" style="flex: 1; margin-right: 10px;">
-                            <input
-                              type="text"
-                              class="form-style"
-                              placeholder="Apellidos"
-                              formControlName="apellido"
-                            />
-                            <i class="input-icon uil uil-user"></i>
-                            <div *ngIf="registerForm.get('apellido')?.invalid && registerForm.get('apellido')?.touched" class="text-danger">
-                              Apellido es requerido.
-                            </div>
+          <div class="col-12 text-center align-self-center">
+              <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                  <div class="card-3d-wrap mx-auto">
+                      <div class="card-3d-wrapper">
+                          <!-- Formulario de Registro -->
+                          <div class="card-back">
+                              <div class="center-wrap">
+                                  <div class="section text-center">
+                                      <h4 class="mb-3 pb-3">Crear Cuenta</h4>
+                                      <form [formGroup]="registerForm">
+                                          <div class="form-group mb-2" style="display: flex;">
+                                              <div class="input-container" style="flex: 1; margin-right: 10px;">
+                                                  <input
+                                                      type="text"
+                                                      class="form-style"
+                                                      placeholder="Apellidos"
+                                                      formControlName="apellido"
+                                                  />
+                                                  <i class="input-icon uil uil-user"></i>
+                                                  <div *ngIf="registerForm.get('apellido')?.invalid && registerForm.get('apellido')?.touched" class="text-danger">
+                                                      Apellido es requerido.
+                                                  </div>
+                                              </div>
+                                              <div class="input-container" style="flex: 1;">
+                                                  <input
+                                                      type="text"
+                                                      class="form-style"
+                                                      placeholder="Nombres"
+                                                      formControlName="nombre"
+                                                  />
+                                                  <i class="input-icon uil uil-user"></i>
+                                                  <div *ngIf="registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched" class="text-danger">
+                                                      Nombre es requerido.
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group mb-2" style="display: flex;">
+                                              <div class="input-container" style="flex: 1; margin-right: 10px;">
+                                                  <input
+                                                      type="tel"
+                                                      class="form-style"
+                                                      placeholder="Teléfono"
+                                                      formControlName="telefono"
+                                                  />
+                                                  <i class="input-icon uil uil-phone"></i>
+                                                  <div *ngIf="registerForm.get('telefono')?.invalid && registerForm.get('telefono')?.touched" class="text-danger">
+                                                      Teléfono debe ser de 9 dígitos.
+                                                  </div>
+                                              </div>
+                                              <div class="input-container" style="flex: 1;">
+                                                  <input
+                                                      type="text"
+                                                      class="form-style"
+                                                      placeholder="DNI"
+                                                      formControlName="dni"
+                                                  />
+                                                  <i class="input-icon uil uil-postcard"></i>
+                                                  <div *ngIf="registerForm.get('dni')?.invalid && registerForm.get('dni')?.touched" class="text-danger">
+                                                      DNI debe ser de 8 dígitos.
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group mt-2">
+                                              <div class="input-container">
+                                                  <input
+                                                      type="email"
+                                                      class="form-style"
+                                                      placeholder="Correo"
+                                                      formControlName="correo"
+                                                  />
+                                                  <i class="input-icon uil uil-at"></i>
+                                                  <div *ngIf="registerForm.get('correo')?.invalid && registerForm.get('correo')?.touched" class="text-danger">
+                                                      Correo no es válido.
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group mt-2">
+                                              <div class="input-container">
+                                                  <input
+                                                      type="text"
+                                                      class="form-style"
+                                                      placeholder="Usuario"
+                                                      formControlName="username"
+                                                  />
+                                                  <i class="input-icon uil uil-user-check"></i>
+                                                  <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="text-danger">
+                                                      Usuario es requerido.
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group mt-2">
+                                              <div class="input-container">
+                                                  <input
+                                                      type="password"
+                                                      class="form-style"
+                                                      placeholder="Contraseña"
+                                                      formControlName="password"
+                                                  />
+                                                  <i class="input-icon uil uil-unlock"></i>
+                                                  <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
+                                                      Contraseña es requerida.
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <button class="btn mt-4" (click)="onRegister()">Registrarse</button>
+                                      </form>
+                                      <p class="mt-3">
+                                          ¿Ya tienes una cuenta? 
+                                          <a routerLink="/login" class="text-primary">Inicia sesión aquí</a>
+                                      </p>
+                                  </div>
+                              </div>
                           </div>
-                          <div class="input-container" style="flex: 1;">
-                            <input
-                              type="text"
-                              class="form-style"
-                              placeholder="Nombres"
-                              formControlName="nombre"
-                            />
-                            <i class="input-icon uil uil-user"></i>
-                            <div *ngIf="registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched" class="text-danger">
-                              Nombre es requerido.
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="form-group mb-2" style="display: flex;">
-                          <div class="input-container" style="flex: 1; margin-right: 10px;">
-                            <input
-                              type="tel"
-                              class="form-style"
-                              placeholder="Teléfono"
-                              formControlName="telefono"
-                            />
-                            <i class="input-icon uil uil-phone"></i>
-                            <div *ngIf="registerForm.get('telefono')?.invalid && registerForm.get('telefono')?.touched" class="text-danger">
-                              Teléfono debe ser de 9 dígitos.
-                            </div>
-                          </div>
-                          <div class="input-container" style="flex: 1;">
-                            <input
-                              type="text"
-                              class="form-style"
-                              placeholder="DNI"
-                              formControlName="dni"
-                            />
-                            <i class="input-icon uil uil-postcard"></i>
-                            <div *ngIf="registerForm.get('dni')?.invalid && registerForm.get('dni')?.touched" class="text-danger">
-                              DNI debe ser de 8 dígitos.
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="form-group mt-2">
-                          <div class="input-container">
-                            <input
-                              type="email"
-                              class="form-style"
-                              placeholder="Correo"
-                              formControlName="correo"
-                            />
-                            <i class="input-icon uil uil-at"></i>
-                            <div *ngIf="registerForm.get('correo')?.invalid && registerForm.get('correo')?.touched" class="text-danger">
-                              Correo no es válido.
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="form-group mt-2">
-                          <div class="input-container">
-                            <input
-                              type="text"
-                              class="form-style"
-                              placeholder="Usuario"
-                              formControlName="username"
-                            />
-                            <i class="input-icon uil uil-user-check"></i>
-                            <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="text-danger">
-                              Usuario es requerido.
-                            </div>
-                          </div>
-                        </div>
-  
-                        <div class="form-group mt-2">
-                          <div class="input-container">
-                            <input
-                              type="password"
-                              class="form-style"
-                              placeholder="Contraseña"
-                              formControlName="password"
-                            />
-                            <i class="input-icon uil uil-unlock"></i>
-                            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
-                              Contraseña es requerida.
-                            </div>
-                          </div>
-                        </div>
-  
-                        <button class="btn mt-4" (click)="onRegister()">Registrarse</button>
-                      </form>
-                    </div>
+                          <!-- Fin del Formulario de Registro -->
+                      </div>
                   </div>
-                </div>
-  
               </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
-  
+</div>

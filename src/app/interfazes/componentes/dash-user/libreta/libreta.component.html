@@ -1,0 +1,115 @@
+<div class="container-fluid mt-4">
+  <h2 class="text-center mb-4 section-title"><i class="bi bi-journal-bookmark me-2"></i>Categorías y Eventos</h2>
+  <div class="row">
+    <!-- Barra de búsqueda de libretas -->
+    <div class="col-12 mb-3">
+      <div class="input-group position-relative">
+        <input type="text" class="form-control" placeholder="Buscar libretas..." [(ngModel)]="searchTerm"
+          (keyup.enter)="buscarLibretas()">
+        <button class="btn btn-outline-secondary" (click)="buscarLibretas()">Buscar</button>
+        <ul *ngIf="searchResults.length > 0" class="list-group position-absolute w-100 search-results">
+          <li *ngFor="let libreta of searchResults" class="list-group-item list-group-item-action"
+            (click)="seleccionarLibretaDeBusqueda(libreta)">
+            <i class="bi bi-journal-text me-2"></i>{{ libreta.nombre }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Columna de libretas -->
+    <div class="col-md-3">
+      <button class="btn btn-create-libreta mb-3 d-flex align-items-center w-100" (click)="abrirModalCrear()">
+        <i class="bi bi-journal-plus me-2"></i> Crear Libreta
+      </button>
+      <ul class="list-group shadow-sm">
+        <li *ngFor="let libreta of libretas"
+          class="list-group-item d-flex justify-content-between align-items-center libreta-item"
+          [class.active]="libretaSeleccionada && libreta.id === libretaSeleccionada.id">
+          <span (click)="seleccionarLibreta(libreta)" class="libreta-nombre"><i class="bi bi-journal-text me-2"></i>{{
+            libreta.nombre }}</span>
+          <i class="bi bi-x-circle text-danger ms-2" (click)="confirmarEliminarLibreta(libreta.id!)"></i>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Columna de notas -->
+    <div class="col-md-9">
+      <div *ngIf="libretaSeleccionada">
+        <!-- Barra de búsqueda de notas -->
+        <div class="input-group mb-3 position-relative">
+          <input type="text" class="form-control" placeholder="Buscar notas..." [(ngModel)]="notaSearchTerm"
+            (keyup.enter)="buscarNotas()">
+          <button class="btn btn-outline-secondary" (click)="buscarNotas()">
+            <i class="bi bi-search"></i>
+          </button>
+          <ul *ngIf="notaSearchResults.length > 0" class="list-group position-absolute w-100 search-results">
+            <li *ngFor="let nota of notaSearchResults" class="list-group-item list-group-item-action"
+              (click)="seleccionarNotaDeBusqueda(nota)">
+              <i class="bi bi-file-earmark-text me-2"></i>{{ nota.titulo }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="d-flex mb-3">
+          <ul class="nav nav-tabs w-100">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center" [class.active]="!notaSeleccionada.id"
+                (click)="crearNotaNueva()">
+                <i class="bi bi-file-earmark-plus me-2"></i> Nueva Nota
+              </a>
+            </li>
+            <li *ngFor="let nota of notas" class="nav-item">
+              <a class="nav-link d-flex align-items-center"
+                [class.active]="notaSeleccionada && nota.id === notaSeleccionada.id" (click)="seleccionarNota(nota)">
+                <i class="bi bi-file-earmark-text me-2"></i>{{ nota.titulo }}
+                <i class="bi bi-x-circle text-danger ms-2" (click)="eliminarNota(nota.id!)"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Formulario de nota -->
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5>{{ notaSeleccionada.id ? 'Editar Nota' : 'Nueva Nota' }}</h5>
+            <div class="mb-3">
+              <label for="tituloNota" class="form-label">Título</label>
+              <input type="text" class="form-control" id="tituloNota" [(ngModel)]="notaSeleccionada.titulo">
+            </div>
+            <div class="mb-3">
+              <label for="contenidoNota" class="form-label">Contenido</label>
+              <angular-editor [(ngModel)]="notaSeleccionada.contenido" name="contenidoNota"
+                [config]="editorConfig"></angular-editor>
+            </div>
+            <button class="btn btn-primary w-100" (click)="guardarNota()">{{ notaSeleccionada.id ? 'Actualizar Nota' :
+              'Guardar Nota' }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para crear libreta -->
+<div class="modal fade" id="crearLibretaModal" tabindex="-1" aria-labelledby="crearLibretaModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="crearLibretaModalLabel">Crear Libreta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="nombreLibreta" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombreLibreta" [(ngModel)]="nuevaLibreta.nombre">
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="crearLibreta()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

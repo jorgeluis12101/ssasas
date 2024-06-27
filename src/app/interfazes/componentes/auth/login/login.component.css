@@ -1,3 +1,4 @@
+/* login.component.css */
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
@@ -14,10 +15,10 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
     background: #ffffff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -25,6 +26,7 @@ body {
 h4 {
     color: #333;
     font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .card-3d-wrap {
@@ -32,6 +34,7 @@ h4 {
     background: #e3f2fd;
     padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .center-wrap {
@@ -39,6 +42,7 @@ h4 {
 }
 
 .form-group {
+    position: relative;
     margin-bottom: 15px;
 }
 
@@ -52,6 +56,12 @@ h4 {
     box-sizing: border-box;
     background-color: #ffffff;
     color: #333;
+    transition: all 0.3s ease;
+}
+
+.form-style:focus {
+    border-color: #0288d1;
+    box-shadow: 0 0 8px rgba(2, 136, 209, 0.2);
 }
 
 .input-icon {
@@ -60,6 +70,7 @@ h4 {
     transform: translateY(-50%);
     right: 15px;
     color: #aaa;
+    transition: all 0.3s ease;
 }
 
 .text-danger {
@@ -76,8 +87,22 @@ h4 {
     color: #fff;
     font-size: 14px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
     background: #0277bd;
+}
+
+.text-primary {
+    color: #0288d1;
+}
+
+.text-primary:hover {
+    color: #0277bd;
+    text-decoration: underline;
+}
+
+.mt-3 {
+    margin-top: 1rem;
 }

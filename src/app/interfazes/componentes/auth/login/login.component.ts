@@ -1,3 +1,4 @@
+// login.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../../servicios/auth.service';
@@ -23,9 +24,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  onLogin() {
+  onLogin(): void {
     if (this.loginForm.invalid) {
       Swal.fire({
         icon: 'error',

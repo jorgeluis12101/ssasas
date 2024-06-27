@@ -21,7 +21,7 @@
 }
 
 .calendar-container {
-  max-width: 1000px; /* Ajusta el ancho del calendario */
+  max-width: 900px; /* Ajusta el ancho del calendario */
   margin: 0 auto; /* Centra el calendario horizontalmente */
   padding: 20px;
   background-color: #fff;
