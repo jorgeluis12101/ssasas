@@ -9,7 +9,7 @@ import { LibretaDTO } from '../modelos/LibretaDTO';
   providedIn: 'root'
 })
 export class NotaService {
-  private apiUrl = 'http://localhost:8080/api/notas';
+  private apiUrl = 'https://nueva-carpeta.fly.dev/api/notas';
 
   constructor(private http: HttpClient) { }
 
@@ -70,7 +70,7 @@ export class NotaService {
   }
 
   obtenerLibretas(): Observable<LibretaDTO[]> {
-    return this.http.get<LibretaDTO[]>(`http://localhost:8080/api/libretas`);
+    return this.http.get<LibretaDTO[]>(`https://nueva-carpeta.fly.dev/api/libretas`);
   }
 
   asignarLibreta(notaId: number, libretaId: number): Observable<Notas> {

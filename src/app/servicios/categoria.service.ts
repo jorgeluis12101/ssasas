@@ -7,7 +7,7 @@ import { Categoria } from '../modelos/categoria';
   providedIn: 'root'
 })
 export class CategoriaService {
-  private baseUrl = 'http://localhost:8080/api/categorias';
+  private baseUrl = 'https://nueva-carpeta.fly.dev/api/categorias';
 
   constructor(private http: HttpClient) {}
 

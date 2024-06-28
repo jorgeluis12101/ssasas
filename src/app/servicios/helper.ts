@@ -1,2 +1,2 @@
-let baserUrl = 'http://localhost:8080'
+let baserUrl = 'https://nueva-carpeta.fly.dev'
 export default baserUrl;

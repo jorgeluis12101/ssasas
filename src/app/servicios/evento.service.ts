@@ -29,7 +29,7 @@ export interface Evento {
   providedIn: 'root'
 })
 export class EventoService {
-  private apiUrl = 'http://localhost:8080/api/eventos';
+  private apiUrl = 'https://nueva-carpeta.fly.dev/api/eventos';
 
   constructor(private http: HttpClient) {}
 
